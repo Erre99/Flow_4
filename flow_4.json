@@ -1,0 +1,275 @@
+[
+    {
+        "id": "e19685db9a41f558",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d7519549ff68dd6f",
+        "type": "mqtt in",
+        "z": "e19685db9a41f558",
+        "name": "",
+        "topic": "codigoIoT/G9/mosquitto/msg",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "41aead1dd382cef0",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "f34285a4fb21d29d",
+                "8b398b193d7bfa3b"
+            ]
+        ]
+    },
+    {
+        "id": "f34285a4fb21d29d",
+        "type": "json",
+        "z": "e19685db9a41f558",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 410,
+        "y": 140,
+        "wires": [
+            [
+                "4c5d4353f90e0f25",
+                "68aa4593145a0b6d"
+            ]
+        ]
+    },
+    {
+        "id": "68aa4593145a0b6d",
+        "type": "function",
+        "z": "e19685db9a41f558",
+        "name": "",
+        "func": "msg.topic = msg.payload.id\nmsg.payload = msg.payload.temp\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 140,
+        "wires": [
+            [
+                "c68f421c35f60045",
+                "0c54a721c4f14f67"
+            ]
+        ]
+    },
+    {
+        "id": "8b398b193d7bfa3b",
+        "type": "debug",
+        "z": "e19685db9a41f558",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "4c5d4353f90e0f25",
+        "type": "debug",
+        "z": "e19685db9a41f558",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "c68f421c35f60045",
+        "type": "ui_chart",
+        "z": "e19685db9a41f558",
+        "name": "",
+        "group": "4e4068bde1a55d36",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Temperatura alumnos",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 920,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0c54a721c4f14f67",
+        "type": "debug",
+        "z": "e19685db9a41f558",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "a6435e0de49c76ee",
+        "type": "inject",
+        "z": "e19685db9a41f558",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"id\":\"Ricardo3\", \"temp\":20.5}",
+        "payloadType": "str",
+        "x": 270,
+        "y": 360,
+        "wires": [
+            [
+                "623855672281056c",
+                "4c10d97e07279076"
+            ]
+        ]
+    },
+    {
+        "id": "623855672281056c",
+        "type": "mqtt out",
+        "z": "e19685db9a41f558",
+        "name": "",
+        "topic": "codigoIoT/G9/mosquitto/msg",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "41aead1dd382cef0",
+        "x": 560,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "4c10d97e07279076",
+        "type": "debug",
+        "z": "e19685db9a41f558",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "41aead1dd382cef0",
+        "type": "mqtt-broker",
+        "name": "Broker g9",
+        "broker": "18.157.172.72",
+        "port": "1883",
+        "clientid": "Ricardo3",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "4e4068bde1a55d36",
+        "type": "ui_group",
+        "name": "Grupo 1: Gráfica de temperatura",
+        "tab": "e9546c25df70882d",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e9546c25df70882d",
+        "type": "ui_tab",
+        "name": "Flow 4 - Tab",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    }
+]
